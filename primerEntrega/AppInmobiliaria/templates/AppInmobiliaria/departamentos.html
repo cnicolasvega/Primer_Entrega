@@ -1,0 +1,63 @@
+{% extends "AppInmobiliaria/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h2>Los mejores departamentos para alquiler</h2>
+
+<h3>Nuestro listado de departamentos:</h3>
+
+<body>
+    <div class="container">
+        <table class="table text-center">
+            <thead>
+                <tr style="color: black;">
+                    <td>Calle</td>
+                    <td>Numero</td>
+                    <td>Piso numero</td>
+                    <td>Habitaciones</td>
+                    <td>Baños</td>
+                    <td>Precio de alquier</td>
+                    <td>Precio de expensas</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if depto %}
+                {% for depto in depto %}
+                    <tr>
+                        <td>{{depto.direccion}}</td>
+                        <td>{{depto.numero}}</td>
+                        <td>{{depto.pisos}}</td>
+                        <td>{{depto.habitaciones}}</td>
+                        <td>{{depto.banos}}</td>
+                        <td>{{depto.precio}}</td>
+                        <td>{{depto.expensas}}</td>
+                    </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<h5>Quieres alquilar un departamento?</h5>
+<form actiom="{% url 'departamentos' %}" method="POST">{% csrf_token %}
+    <p>Calle: <input type="text" name="direccion" id="direccion"></p>
+    <p>Numero: <input type="number" name="numero" id="numero"></p>
+    <p>Pisos: <input type="number" name="pisos" id="pisos"></p>
+    <p>Habitaciones: <input type="number" name="habitaciones" id="habitaciones"></p>
+    <p>Baños: <input type="number" name="banos" id="banos"></p>
+    <p>Precio de alquiler: <input type="number" name="precio" id="precio"></p>
+    <p>Precio de expensas: <input type="number" name="expensas" id="expensas"></p>
+    <input type="submit" value="Enviar">
+</form>
+
+{% endblock %}
+
+{% block titulo %}
+
+    <h1>Bienvenidos a CoderHouse </h1>
+    <h2>Su inmobiliaria de confianza!</h2>
+
+{% endblock %}

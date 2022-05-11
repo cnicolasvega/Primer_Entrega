@@ -1,0 +1,41 @@
+{% extends "AppInmobiliaria/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <h1> Casas encontrados </h1>
+    {% if valor %}
+    {% for costo in valor %}
+    <body>
+        <div class="container">
+            <table class="table text-center">
+                <thead>
+                    <tr style="color: black;">
+                     <td>Calle</td>
+                     <td>Numero</td>
+                     <td>Valor de venta</td>
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <tr>
+                        <td>{{costo.direccion}}</td>
+                        <td>{{costo.numero}}</td>
+                        <td>{{costo.precio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</body>
+    {% endfor %}
+    {% else %}
+    <p>No hay casas para ese presupuesto</p>
+    {% endif %}
+{% endblock %}
+
+{% block titulo %}
+
+    <h1>Bienvenidos a CoderHouse </h1>
+    <h2>Su inmobiliaria de confianza!</h2>
+
+{% endblock %}

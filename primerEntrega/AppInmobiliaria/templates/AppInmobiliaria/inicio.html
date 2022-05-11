@@ -1,0 +1,31 @@
+{% extends "AppInmobiliaria/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+    <h3> Los departamentos para tu presupuesto!! </h3>
+
+    <form action="{% url 'buscaralquiler' %}" method="GET">
+        <p><input type="number" name="precio" placeholder="Tu proximo alquiler"><input type="submit" value="Buscar"></p>
+    </form>
+
+    {% if respuesta %}
+        <p>respuesta</p>
+    {% endif %}
+
+    <h3> Queires una nueva casa? Pon tu presupuesto!! </h3>
+
+    <form action="{% url 'buscarcasa' %}" method="GET">
+     <p><input type="number" name="precio" placeholder="Tu nueva casa"><input type="submit" value="Buscar"></p>
+    </form>
+    
+
+{% endblock %}
+
+{% block titulo %}
+
+    <h1>Bienvenidos a CoderHouse </h1>
+    <h2>Su inmobiliaria de confianza!</h2>
+
+{% endblock %}

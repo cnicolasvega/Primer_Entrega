@@ -1,0 +1,53 @@
+{% extends "AppInmobiliaria/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Nuestros agentes</h1>
+
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr style="color: black;">
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Telefono</td>
+                    <td>Correo</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if contacto %}
+                {% for agente in contacto %}
+                    <tr>
+                        <td>{{agente.nombre}}</td>
+                        <td>{{agente.apellido}}</td>
+                        <td>{{agente.telefono}}</td>
+                        <td>{{agente.mail}}</td>
+                    </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<h5>Quieres ser un agente?</h5>
+
+<form actiom="{% url 'contactos' %}" method="POST">{% csrf_token %}
+    <p>Nombre: <input type="text" name="nombre" id="nombre"></p>
+    <p>Apellido: <input type="text" name="apellido" id="apellido"></p>
+    <p>Telefono: <input type="number" name="telefono" id="telefono"></p>
+    <p>Correo electronico: <input type="text" name="mail" id="mail"></p>
+    <input type="submit" value="Enviar">
+</form>
+
+{% endblock %}
+
+{% block titulo %}
+
+<h1>Bienvenidos a CoderHouse </h1>
+<h2>Su inmobiliaria de confianza!</h2>
+
+{% endblock %}
