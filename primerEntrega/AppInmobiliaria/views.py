@@ -1,5 +1,4 @@
 from multiprocessing import context
-import re
 from django.shortcuts import render
 from .models import Contactos, Departamentos, Casas
 
