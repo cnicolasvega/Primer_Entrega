@@ -21,3 +21,4 @@ urlpatterns = [
     path('AppInmobiliaria/', include('AppInmobiliaria.urls')),
 
 ]
+Te edite!
